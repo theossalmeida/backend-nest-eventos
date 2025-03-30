@@ -17,6 +17,12 @@ export class ComentariosService {
         });
     }
 
+    findAll() {
+        return this.comentariosRepository
+            .createQueryBuilder('comentarios')
+            .getMany();
+    }
+
     create(createComentarioDto: CreateComentarioDto) {
         const comentario = this.comentariosRepository.create(createComentarioDto);
         return this.comentariosRepository.save(comentario);
